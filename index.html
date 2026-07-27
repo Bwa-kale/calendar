@@ -6,126 +6,121 @@
 <title>FIXTURE VAULT — 2026/27</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#000000;
-  --panel:rgba(255,255,255,0.035);
-  --line:rgba(255,255,255,0.09);
-  --txt:#e9ecf2;
-  --dim:#7d8493;
-  --gold:#d4af37;
-  --neon:#39ff88;
-  --violet:#8b5cf6;
-  --rma:#d8dce6;
-  --fcb:#c0397a;
-  --atm:#e5372f;
-  --rso:#2f7ff0;
-  --bay:#ff3b30;
+  --bg:#000;--panel:rgba(255,255,255,.04);--line:rgba(255,255,255,.10);
+  --txt:#f2f4f8;--dim:#8b93a3;--gold:#ffc93c;--neon:#39ff88;--violet:#a78bfa;--red:#ff4b3e;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--bg);color:var(--txt);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-body{padding:22px 16px 80px;max-width:1180px;margin:0 auto}
-a{color:inherit}
+body{padding:22px 16px 80px;max-width:1320px;margin:0 auto}
 
-/* ---------- header ---------- */
-header{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:22px}
-.eyebrow{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.34em;color:var(--gold);text-transform:uppercase}
-h1{font-family:Orbitron,sans-serif;font-weight:900;font-size:clamp(28px,6vw,46px);letter-spacing:.06em;margin:8px 0 6px;
-   background:linear-gradient(92deg,#fff 10%,var(--gold) 55%,var(--violet) 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.sub{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--dim);letter-spacing:.08em}
+header{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:20px}
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase}
+h1{font-family:Orbitron,sans-serif;font-weight:900;font-size:clamp(30px,6.4vw,50px);letter-spacing:.06em;margin:9px 0 7px;
+   background:linear-gradient(92deg,#fff 6%,var(--gold) 48%,var(--violet) 96%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--dim);letter-spacing:.06em}
 
-/* ---------- stat strip ---------- */
-.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:20px 0 24px}
-.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;backdrop-filter:blur(9px)}
-.stat b{display:block;font-family:Orbitron,sans-serif;font-size:22px;font-weight:700;letter-spacing:.03em}
-.stat span{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.2em;color:var(--dim);text-transform:uppercase}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:20px 0 22px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:13px 15px;backdrop-filter:blur(9px)}
+.stat b{display:block;font-family:Orbitron,sans-serif;font-size:23px;font-weight:700}
+.stat span{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.17em;color:var(--dim);text-transform:uppercase}
 .stat.acc b{color:var(--neon)}
 
-/* ---------- controls ---------- */
-.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:18px}
-.chip{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em;padding:7px 13px;border-radius:999px;
-      border:1px solid var(--line);background:transparent;color:var(--dim);cursor:pointer;transition:.16s}
-.chip:hover{color:var(--txt);border-color:rgba(255,255,255,.28)}
-.chip[aria-pressed="true"]{color:#000;font-weight:600}
-.chip.t-all[aria-pressed="true"]{background:var(--gold);border-color:var(--gold)}
-.chip.t-rma[aria-pressed="true"]{background:var(--rma);border-color:var(--rma)}
-.chip.t-fcb[aria-pressed="true"]{background:var(--fcb);border-color:var(--fcb);color:#fff}
-.chip.t-atm[aria-pressed="true"]{background:var(--atm);border-color:var(--atm);color:#fff}
-.chip.t-rso[aria-pressed="true"]{background:var(--rso);border-color:var(--rso);color:#fff}
-.chip.t-bay[aria-pressed="true"]{background:var(--bay);border-color:var(--bay);color:#fff}
+.bar-row{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-bottom:10px}
+.lbl{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;width:64px;flex:0 0 auto}
+.chip{display:inline-flex;align-items:center;gap:7px;font-family:"JetBrains Mono",monospace;font-size:11.5px;font-weight:600;
+      letter-spacing:.05em;padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--dim);cursor:pointer;transition:.16s}
+.chip:hover{color:var(--txt);border-color:rgba(255,255,255,.3)}
+.chip[aria-pressed="true"]{color:#000;background:var(--gold);border-color:var(--gold)}
+.chip.team::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--tc);flex:0 0 auto}
+.chip.team[aria-pressed="true"]{background:var(--tc);border-color:var(--tc);color:var(--tk)}
+.chip.team[aria-pressed="true"]::before{background:var(--tk)}
+.chip.hidden{display:none}
 .spacer{flex:1 1 auto}
-.ghost{font-family:"JetBrains Mono",monospace;font-size:11px;padding:7px 13px;border-radius:8px;border:1px solid var(--line);
+.ghost{font-family:"JetBrains Mono",monospace;font-size:11.5px;padding:7px 13px;border-radius:8px;border:1px solid var(--line);
        background:transparent;color:var(--dim);cursor:pointer;transition:.16s}
-.ghost:hover{color:var(--neon);border-color:rgba(57,255,136,.45)}
-.toggle{display:flex;align-items:center;gap:7px;font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--dim);cursor:pointer}
-.toggle input{accent-color:var(--violet)}
+.ghost:hover{color:var(--neon);border-color:rgba(57,255,136,.5)}
+.toggle{display:flex;align-items:center;gap:7px;font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--dim);cursor:pointer}
+.toggle input{accent-color:var(--violet);width:15px;height:15px}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:14px 0 24px;padding-top:13px;border-top:1px solid var(--line)}
 
-/* ---------- month grid ---------- */
+/* ---------- calendar ---------- */
 .month{margin-bottom:34px}
-.mhead{display:flex;align-items:baseline;gap:12px;margin-bottom:10px}
-.mhead h2{font-family:Orbitron,sans-serif;font-size:15px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
-.mhead em{font-family:"JetBrains Mono",monospace;font-style:normal;font-size:10px;color:var(--dim);letter-spacing:.14em}
+.mhead{display:flex;align-items:baseline;gap:12px;margin-bottom:11px}
+.mhead h2{font-family:Orbitron,sans-serif;font-size:17px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+.mhead em{font-family:"JetBrains Mono",monospace;font-style:normal;font-size:11.5px;color:var(--dim);letter-spacing:.12em}
 .dow{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:6px}
-.dow span{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.16em;color:var(--dim);text-align:center}
+.dow span{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--dim);text-align:center}
 .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
-.cell{min-height:74px;border:1px solid var(--line);border-radius:9px;padding:5px;background:rgba(255,255,255,.014);
-      display:flex;flex-direction:column;gap:3px}
-.cell.empty{border-style:dashed;opacity:.28}
-.cell.has{background:rgba(255,255,255,.05)}
-.dnum{font-family:"JetBrains Mono",monospace;font-size:9.5px;color:var(--dim)}
+.cell{min-height:118px;border:1px solid var(--line);border-radius:10px;padding:6px;background:rgba(255,255,255,.016);
+      display:flex;flex-direction:column;gap:4px}
+.cell.empty{border-style:dashed;opacity:.22}
+.cell.has{background:rgba(255,255,255,.055)}
+.cell.heavy{background:rgba(255,201,60,.09);border-color:rgba(255,201,60,.4)}
+.dnum{font-family:Orbitron,sans-serif;font-size:13px;font-weight:700;color:var(--dim)}
 .cell.has .dnum{color:var(--gold)}
-.dot{font-size:9px;font-family:"JetBrains Mono",monospace;line-height:1.25;padding:2px 4px;border-radius:4px;cursor:pointer;
-     border-left:2px solid;background:rgba(255,255,255,.05);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dot:hover{background:rgba(255,255,255,.13)}
+.dot{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;line-height:1.35;padding:4px 6px;border-radius:6px;
+     border-left:4px solid;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:default;transition:.14s}
+.dot:hover{filter:brightness(1.35)}
+.dot.star{box-shadow:inset 0 0 0 1px rgba(255,201,60,.55)}
 
-/* ---------- fixture list ---------- */
+/* ---------- fixture cards ---------- */
 .list{display:flex;flex-direction:column;gap:9px}
-.card{border:1px solid var(--line);border-left:3px solid;border-radius:11px;background:var(--panel);padding:13px 15px;backdrop-filter:blur(9px);
-      display:grid;grid-template-columns:78px 1fr auto;gap:14px;align-items:center;transition:.16s}
-.card:hover{background:rgba(255,255,255,.06)}
-.card.mirror{opacity:.62;border-style:dashed}
-.when{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--dim);line-height:1.5}
-.when b{display:block;font-family:Orbitron,sans-serif;font-size:19px;color:var(--txt);font-weight:700}
-.fix{font-family:Inter,sans-serif;font-size:14.5px;font-weight:600;letter-spacing:.01em}
-.venue{font-family:"JetBrains Mono",monospace;font-size:9px;padding:1px 5px;border-radius:4px;margin-left:6px;vertical-align:1px}
-.venue.h{background:rgba(57,255,136,.13);color:var(--neon)}
-.venue.a{background:rgba(139,92,246,.16);color:var(--violet)}
-.meta{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--dim);margin-top:3px;letter-spacing:.05em}
-.bar{display:flex;height:6px;border-radius:3px;overflow:hidden;margin-top:8px;max-width:340px}
-.bar i{display:block}
-.bar .w{background:var(--neon)}.bar .d{background:#5b6272}.bar .l{background:var(--atm)}
-.odds{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--dim);margin-top:5px;letter-spacing:.05em}
-.odds b{color:var(--neon);font-weight:600}
-.res{display:flex;gap:5px}
-.res button{width:31px;height:31px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--dim);
-            font-family:Orbitron,sans-serif;font-size:11px;font-weight:700;cursor:pointer;transition:.14s}
-.res button:hover{border-color:rgba(255,255,255,.35);color:var(--txt)}
+.card{border:1px solid var(--line);border-left:4px solid;border-radius:11px;background:var(--panel);padding:14px 16px;backdrop-filter:blur(9px);
+      display:grid;grid-template-columns:80px 1fr auto;gap:15px;align-items:center;transition:.16s}
+.card:hover{background:rgba(255,255,255,.07)}
+.card.mirror{opacity:.58;border-style:dashed}
+.when{font-family:"JetBrains Mono",monospace;font-size:11.5px;font-weight:600;color:var(--dim);line-height:1.5}
+.when b{display:block;font-family:Orbitron,sans-serif;font-size:21px;color:var(--txt);font-weight:700}
+.fix{font-size:15.5px;font-weight:700;letter-spacing:.005em}
+.tag{font-family:"JetBrains Mono",monospace;font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:5px;margin-left:7px;vertical-align:2px;letter-spacing:.09em}
+.tag.h{background:rgba(57,255,136,.15);color:var(--neon)}
+.tag.a{background:rgba(167,139,250,.18);color:var(--violet)}
+.tag.big{background:rgba(255,201,60,.18);color:var(--gold)}
+.meta{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--dim);margin-top:4px}
+.bar{display:flex;height:8px;border-radius:4px;overflow:hidden;margin-top:9px;max-width:360px}
+.bar i{display:block}.bar .w{background:var(--neon)}.bar .d{background:#646c7e}.bar .l{background:var(--red)}
+.odds{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--dim);margin-top:6px}
+.odds b{color:var(--neon);font-weight:700}
+.res{display:flex;gap:6px}
+.res button{width:34px;height:34px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--dim);
+            font-family:Orbitron,sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:.14s}
+.res button:hover{border-color:rgba(255,255,255,.4);color:var(--txt)}
 .res button.on[data-r="W"]{background:var(--neon);border-color:var(--neon);color:#000}
-.res button.on[data-r="D"]{background:#5b6272;border-color:#5b6272;color:#000}
-.res button.on[data-r="L"]{background:var(--atm);border-color:var(--atm);color:#fff}
-
-.empty-note{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--dim);border:1px dashed var(--line);
-            border-radius:11px;padding:26px;text-align:center}
-footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-family:"JetBrains Mono",monospace;
-       font-size:10px;color:var(--dim);letter-spacing:.06em;line-height:1.8}
+.res button.on[data-r="D"]{background:#646c7e;border-color:#646c7e;color:#000}
+.res button.on[data-r="L"]{background:var(--red);border-color:var(--red);color:#fff}
+h3.sec{font-family:Orbitron,sans-serif;font-size:15px;letter-spacing:.2em;margin:4px 0 13px;color:var(--gold)}
+.empty-note{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--dim);border:1px dashed var(--line);border-radius:11px;padding:28px;text-align:center}
+footer{margin-top:32px;padding-top:16px;border-top:1px solid var(--line);font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--dim);line-height:1.9}
 :focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-@media (max-width:720px){
-  .card{grid-template-columns:60px 1fr;gap:10px}
+@media (max-width:900px){.cell{min-height:96px}.dot{font-size:11px}}
+@media (max-width:640px){
+  .card{grid-template-columns:56px 1fr;gap:11px}
   .res{grid-column:1/-1;justify-content:flex-end}
-  .cell{min-height:56px}
-  .dot{font-size:0;padding:5px 3px}
-  .dot::before{content:"";display:block;height:4px;border-radius:2px;background:currentColor;opacity:.9}
+  .cell{min-height:74px;padding:4px}
+  .grid,.dow{gap:4px}
+  .dot{font-size:9.5px;padding:3px 4px;border-left-width:3px}
+  .dnum{font-size:11px}
+  .lbl{width:100%}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media print{
+  body{background:#fff;color:#000;max-width:none}
+  .tools,.bar-row,.res,.strip{display:none}
+  .card{break-inside:avoid;border-color:#bbb;background:#fff}
+  .cell{border-color:#ccc}
+  h1{color:#000;-webkit-text-fill-color:#000}
+}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="eyebrow">Season 2026 / 27 · La Liga · Bundesliga</div>
+  <div class="eyebrow">Season 2026/27 · La Liga · Bundesliga · Premier League · Serie A</div>
   <h1>FIXTURE VAULT</h1>
-  <div class="sub">39 tracked fixtures · Aug 19 → Oct 31, 2026 · projected odds vs. logged result</div>
+  <div class="sub">15 clubs · Aug 19 → Oct 31, 2026 · projected odds vs. logged result</div>
 </header>
 
 <div class="strip">
@@ -134,205 +129,306 @@ footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-fa
   <div class="stat"><span>Record W-D-L</span><b id="s-record">—</b></div>
   <div class="stat acc"><span>Model accuracy</span><b id="s-acc">—</b></div>
   <div class="stat"><span>Avg. win prob</span><b id="s-avg">—</b></div>
+  <div class="stat"><span>Marquee ties</span><b id="s-big">—</b></div>
 </div>
 
-<div class="controls" id="filters">
-  <button class="chip t-all" data-team="ALL" aria-pressed="true">ALL</button>
-  <button class="chip t-rma" data-team="RMA" aria-pressed="false">REAL MADRID</button>
-  <button class="chip t-fcb" data-team="FCB" aria-pressed="false">BARCELONA</button>
-  <button class="chip t-atm" data-team="ATM" aria-pressed="false">ATLÉTICO</button>
-  <button class="chip t-rso" data-team="RSO" aria-pressed="false">REAL SOCIEDAD</button>
-  <button class="chip t-bay" data-team="BAY" aria-pressed="false">BAYERN</button>
-  <span class="spacer"></span>
+<div class="bar-row" id="leagues"><span class="lbl">League</span></div>
+<div class="bar-row" id="teams"><span class="lbl">Club</span></div>
+
+<div class="tools">
   <label class="toggle"><input type="checkbox" id="hideMirror" checked> Hide mirrored entries</label>
+  <label class="toggle"><input type="checkbox" id="bigOnly"> Marquee fixtures only</label>
+  <span class="spacer"></span>
   <button class="ghost" id="btnIcs">Download .ics</button>
+  <button class="ghost" id="btnPrint">Print</button>
   <button class="ghost" id="btnReset">Clear results</button>
 </div>
 
 <div id="months"></div>
 
-<h2 style="font-family:Orbitron,sans-serif;font-size:14px;letter-spacing:.22em;margin:6px 0 12px;color:var(--gold)">FIXTURE LOG</h2>
+<h3 class="sec">FIXTURE LOG</h3>
 <div class="list" id="list"></div>
 
 <footer>
-  Mirrored entries are the same match written from the opponent's side (Aug 26, Sep 13, Sep 20). They are hidden by default so the calendar counts each match once.<br>
+  Mirrored entries are the same match written from the opponent's side — nine across the four leagues. Hidden by default so each match counts once.<br>
+  Marquee fixtures are outlined in gold in the grid: derbies, Klassiker, heavyweight ties and big matches.<br>
   Odds are projections, not market prices. Results save to this browser only.
 </footer>
 
 <script>
 const TEAMS={
- RMA:{name:"Real Madrid",c:"#d8dce6"},
- FCB:{name:"FC Barcelona",c:"#c0397a"},
- ATM:{name:"Atlético Madrid",c:"#e5372f"},
- RSO:{name:"Real Sociedad",c:"#2f7ff0"},
- BAY:{name:"Bayern Munich",c:"#ff3b30"}
+ RMA:{n:"Real Madrid",      ab:"RMA",c:"#f1f3f8",k:"#000",lg:"LL"},
+ FCB:{n:"FC Barcelona",     ab:"FCB",c:"#e5177b",k:"#fff",lg:"LL"},
+ ATM:{n:"Atlético Madrid",  ab:"ATM",c:"#ff3b30",k:"#fff",lg:"LL"},
+ RSO:{n:"Real Sociedad",    ab:"RSO",c:"#2f7ff0",k:"#fff",lg:"LL"},
+ BAY:{n:"Bayern Munich",    ab:"BAY",c:"#ff9500",k:"#000",lg:"BL"},
+ ARS:{n:"Arsenal",          ab:"ARS",c:"#ff5470",k:"#000",lg:"PL"},
+ MUN:{n:"Manchester United",ab:"MUN",c:"#e01e37",k:"#fff",lg:"PL"},
+ MCI:{n:"Manchester City",  ab:"MCI",c:"#6cabdd",k:"#000",lg:"PL"},
+ LIV:{n:"Liverpool",        ab:"LIV",c:"#ffd60a",k:"#000",lg:"PL"},
+ CHE:{n:"Chelsea",          ab:"CHE",c:"#4361ee",k:"#fff",lg:"PL"},
+ INT:{n:"Inter Milan",      ab:"INT",c:"#00d5c0",k:"#000",lg:"SA"},
+ NAP:{n:"SSC Napoli",       ab:"NAP",c:"#00b4ff",k:"#000",lg:"SA"},
+ JUV:{n:"Juventus FC",      ab:"JUV",c:"#b9c2cf",k:"#000",lg:"SA"},
+ MIL:{n:"AC Milan",         ab:"MIL",c:"#ff0a54",k:"#fff",lg:"SA"},
+ ROM:{n:"AS Roma",          ab:"ROM",c:"#c9a227",k:"#000",lg:"SA"}
 };
-// [id, ISO date, team, opponent, H/A, competition, matchday label, win, draw, loss, mirror]
+const LEAGUES={LL:"La Liga",BL:"Bundesliga",PL:"Premier League",SA:"Serie A"};
+const OPP={"Málaga":"MAL","Real Betis":"BET","Espanyol":"ESP","Elche":"ELC","Villarreal":"VIL","Real Sociedad":"RSO",
+"Real Madrid":"RMA","Athletic Club":"ATH","VfB Stuttgart":"STU","Sevilla":"SEV","Rayo Vallecano":"RAY","FC Schalke 04":"S04",
+"Valencia":"VAL","Levante":"LEV","Atlético Madrid":"ATM","SV Elversberg":"ELV","Real Racing Club":"RAC","CA Osasuna":"OSA",
+"Getafe":"GET","Union Berlin":"FCU","Girona":"GIR","FC Augsburg":"AUG","RB Leipzig":"RBL","Borussia Dortmund":"BVB",
+"Eintracht Frankfurt":"SGE","Coventry City":"COV","Hull City":"HUL","AFC Bournemouth":"BOU","Newcastle United":"NEW",
+"Fulham":"FUL","Crystal Palace":"CRY","Nottingham Forest":"NFO","Brighton & Hove Albion":"BHA","Ipswich Town":"IPS",
+"Aston Villa":"AVL","Chelsea":"CHE","Everton":"EVE","Manchester City":"MCI","Manchester United":"MUN","Brentford":"BRE",
+"Sunderland":"SUN","Leeds United":"LEE","Tottenham Hotspur":"TOT","Arsenal":"ARS","Liverpool":"LIV",
+"AC Monza":"MON","Genoa CFC":"GEN","Frosinone Calcio":"FRO","Torino FC":"TOR","ACF Fiorentina":"FIO","Venezia FC":"VEN",
+"Parma Calcio":"PAR","Como 1907":"COM","Cagliari Calcio":"CAG","U.S. Lecce":"LEC","SSC Napoli":"NAP","Atalanta BC":"ATA",
+"AC Milan":"MIL","Juventus FC":"JUV","U.S. Sassuolo":"SAS","Bologna FC":"BOL","S.S. Lazio":"LAZ","Udinese Calcio":"UDI",
+"Inter Milan":"INT","AS Roma":"ROM","Hellas Verona":"VER","Empoli FC":"EMP"};
+
+// id, date, team, opponent, H/A, matchday, win, draw, loss, mirror, marquee
 const M=[
- ["m01","2026-08-19","ATM","Málaga","H","La Liga","Matchday 1",74,17,9,0],
- ["m02","2026-08-21","RSO","Real Betis","A","La Liga","Matchday 2",35,31,34,0],
- ["m03","2026-08-22","RMA","Espanyol","A","La Liga","Matchday 2",68,20,12,0],
- ["m04","2026-08-23","FCB","Elche","A","La Liga","Matchday 2",64,22,14,0],
- ["m05","2026-08-23","ATM","Villarreal","H","La Liga","Matchday 2",52,25,23,0],
- ["m06","2026-08-26","RMA","Real Sociedad","H","La Liga","Matchday 1 · rescheduled",66,19,15,0],
- ["m07","2026-08-26","RSO","Real Madrid","A","La Liga","Matchday 1 · rescheduled",15,19,66,1],
- ["m08","2026-08-27","FCB","Athletic Club","H","La Liga","Matchday 1 · rescheduled",58,23,19,0],
- ["m09","2026-08-28","BAY","VfB Stuttgart","H","Bundesliga","Matchday 1",67,18,15,0],
- ["m10","2026-08-29","ATM","Sevilla","A","La Liga","Matchday 3",44,28,28,0],
- ["m11","2026-08-29","RSO","Espanyol","H","La Liga","Matchday 3",57,25,18,0],
- ["m12","2026-08-30","RMA","Málaga","H","La Liga","Matchday 3",81,13,6,0],
- ["m13","2026-08-31","FCB","Rayo Vallecano","H","La Liga","Matchday 3",75,16,9,0],
- ["m14","2026-09-05","BAY","FC Schalke 04","A","Bundesliga","Matchday 2",72,17,11,0],
- ["m15","2026-09-06","RMA","Real Betis","A","La Liga","Matchday 4",54,24,22,0],
- ["m16","2026-09-06","FCB","Valencia","A","La Liga","Matchday 4",51,26,23,0],
- ["m17","2026-09-06","ATM","Athletic Club","A","La Liga","Matchday 4",38,29,33,0],
- ["m18","2026-09-06","RSO","Elche","A","La Liga","Matchday 4",48,29,23,0],
- ["m19","2026-09-13","RMA","Rayo Vallecano","H","La Liga","Matchday 5",78,15,7,0],
- ["m20","2026-09-13","FCB","Levante","A","La Liga","Matchday 5",62,23,15,0],
- ["m21","2026-09-13","ATM","Real Sociedad","A","La Liga","Matchday 5",36,30,34,0],
- ["m22","2026-09-13","RSO","Atlético Madrid","H","La Liga","Matchday 5",34,30,36,1],
- ["m23","2026-09-13","BAY","SV Elversberg","A","Bundesliga","Matchday 3",79,14,7,0],
- ["m24","2026-09-16","RMA","Elche","A","La Liga","Matchday 6",62,23,15,0],
- ["m25","2026-09-16","FCB","Real Racing Club","H","La Liga","Matchday 6",84,11,5,0],
- ["m26","2026-09-16","ATM","CA Osasuna","H","La Liga","Matchday 6",69,20,11,0],
- ["m27","2026-09-16","RSO","Getafe","H","La Liga","Matchday 6",55,26,19,0],
- ["m28","2026-09-18","BAY","Union Berlin","H","Bundesliga","Matchday 4",76,16,8,0],
- ["m29","2026-09-20","RMA","Atlético Madrid","A","La Liga","Matchday 7 · Derbi",36,29,35,0],
- ["m30","2026-09-20","FCB","Sevilla","A","La Liga","Matchday 7",46,27,27,0],
- ["m31","2026-09-20","ATM","Real Madrid","H","La Liga","Matchday 7 · Derbi",35,29,36,1],
- ["m32","2026-09-20","RSO","Girona","A","La Liga","Matchday 7",33,28,39,0],
- ["m33","2026-10-10","BAY","FC Augsburg","A","Bundesliga","Matchday 5",68,20,12,0],
- ["m34","2026-10-11","RMA","Villarreal","H","La Liga","Matchday 8",70,19,11,0],
- ["m35","2026-10-11","FCB","Getafe","H","La Liga","Matchday 8",78,15,7,0],
- ["m36","2026-10-11","ATM","Elche","A","La Liga","Matchday 8",56,25,19,0],
- ["m37","2026-10-11","RSO","Valencia","H","La Liga","Matchday 8",49,28,23,0],
- ["m38","2026-10-17","BAY","RB Leipzig","H","Bundesliga","Matchday 6",59,22,19,0],
- ["m39","2026-10-24","BAY","Borussia Dortmund","A","Bundesliga","Matchday 7 · Der Klassiker",42,26,32,0],
- ["m40","2026-10-31","BAY","Eintracht Frankfurt","H","Bundesliga","Matchday 8",73,17,10,0]
-].map(r=>({id:r[0],date:r[1],team:r[2],opp:r[3],ven:r[4],comp:r[5],md:r[6],w:r[7],d:r[8],l:r[9],mirror:!!r[10]}));
+["m01","2026-08-19","ATM","Málaga","H","MD1",74,17,9,0,0],
+["m02","2026-08-21","RSO","Real Betis","A","MD2",35,31,34,0,0],
+["m03","2026-08-22","RMA","Espanyol","A","MD2",68,20,12,0,0],
+["m04","2026-08-23","FCB","Elche","A","MD2",64,22,14,0,0],
+["m05","2026-08-23","ATM","Villarreal","H","MD2",52,25,23,0,0],
+["m06","2026-08-26","RMA","Real Sociedad","H","MD1 · rescheduled",66,19,15,0,0],
+["m07","2026-08-26","RSO","Real Madrid","A","MD1 · rescheduled",15,19,66,1,0],
+["m08","2026-08-27","FCB","Athletic Club","H","MD1 · rescheduled",58,23,19,0,0],
+["m09","2026-08-28","BAY","VfB Stuttgart","H","MD1",67,18,15,0,0],
+["m10","2026-08-29","ATM","Sevilla","A","MD3",44,28,28,0,0],
+["m11","2026-08-29","RSO","Espanyol","H","MD3",57,25,18,0,0],
+["m12","2026-08-30","RMA","Málaga","H","MD3",81,13,6,0,0],
+["m13","2026-08-31","FCB","Rayo Vallecano","H","MD3",75,16,9,0,0],
+["m14","2026-09-05","BAY","FC Schalke 04","A","MD2",72,17,11,0,0],
+["m15","2026-09-06","RMA","Real Betis","A","MD4",54,24,22,0,0],
+["m16","2026-09-06","FCB","Valencia","A","MD4",51,26,23,0,0],
+["m17","2026-09-06","ATM","Athletic Club","A","MD4",38,29,33,0,0],
+["m18","2026-09-06","RSO","Elche","A","MD4",48,29,23,0,0],
+["m19","2026-09-13","RMA","Rayo Vallecano","H","MD5",78,15,7,0,0],
+["m20","2026-09-13","FCB","Levante","A","MD5",62,23,15,0,0],
+["m21","2026-09-13","ATM","Real Sociedad","A","MD5",36,30,34,0,0],
+["m22","2026-09-13","RSO","Atlético Madrid","H","MD5",34,30,36,1,0],
+["m23","2026-09-13","BAY","SV Elversberg","A","MD3",79,14,7,0,0],
+["m24","2026-09-16","RMA","Elche","A","MD6",62,23,15,0,0],
+["m25","2026-09-16","FCB","Real Racing Club","H","MD6",84,11,5,0,0],
+["m26","2026-09-16","ATM","CA Osasuna","H","MD6",69,20,11,0,0],
+["m27","2026-09-16","RSO","Getafe","H","MD6",55,26,19,0,0],
+["m28","2026-09-18","BAY","Union Berlin","H","MD4",76,16,8,0,0],
+["m29","2026-09-20","RMA","Atlético Madrid","A","MD7 · Derbi Madrileño",36,29,35,0,1],
+["m30","2026-09-20","FCB","Sevilla","A","MD7",46,27,27,0,0],
+["m31","2026-09-20","ATM","Real Madrid","H","MD7 · Derbi Madrileño",35,29,36,1,1],
+["m32","2026-09-20","RSO","Girona","A","MD7",33,28,39,0,0],
+["m33","2026-10-10","BAY","FC Augsburg","A","MD5",68,20,12,0,0],
+["m34","2026-10-11","RMA","Villarreal","H","MD8",70,19,11,0,0],
+["m35","2026-10-11","FCB","Getafe","H","MD8",78,15,7,0,0],
+["m36","2026-10-11","ATM","Elche","A","MD8",56,25,19,0,0],
+["m37","2026-10-11","RSO","Valencia","H","MD8",49,28,23,0,0],
+["m38","2026-10-17","BAY","RB Leipzig","H","MD6",59,22,19,0,0],
+["m39","2026-10-24","BAY","Borussia Dortmund","A","MD7 · Der Klassiker",42,26,32,0,1],
+["m40","2026-10-31","BAY","Eintracht Frankfurt","H","MD8",73,17,10,0,0],
+["e01","2026-08-21","ARS","Coventry City","H","MW1",82,12,6,0,0],
+["e02","2026-08-22","MUN","Hull City","A","MW1",58,24,18,0,0],
+["e03","2026-08-23","MCI","AFC Bournemouth","H","MW1",85,10,5,0,0],
+["e04","2026-08-23","LIV","Newcastle United","A","MW1",46,26,28,0,0],
+["e05","2026-08-24","CHE","Fulham","A","MW1",51,26,23,0,0],
+["e06","2026-08-28","MCI","Crystal Palace","A","MW2",68,20,12,0,0],
+["e07","2026-08-29","LIV","Nottingham Forest","H","MW2",79,14,7,0,0],
+["e08","2026-08-30","CHE","Brighton & Hove Albion","H","MW2",56,24,20,0,0],
+["e09","2026-08-30","MUN","Ipswich Town","H","MW2",74,17,9,0,0],
+["e10","2026-08-31","ARS","Aston Villa","A","MW2",52,25,23,0,0],
+["e11","2026-09-04","LIV","Ipswich Town","A","MW3",69,19,12,0,0],
+["e12","2026-09-05","MCI","Coventry City","H","MW3",88,9,3,0,0],
+["e13","2026-09-05","ARS","Chelsea","H","MW3 · London Derby",55,25,20,0,1],
+["e14","2026-09-05","CHE","Arsenal","A","MW3 · London Derby",20,25,55,1,1],
+["e15","2026-09-06","MUN","Everton","A","MW3",53,26,21,0,0],
+["e16","2026-09-12","CHE","Hull City","H","MW4",76,16,8,0,0],
+["e17","2026-09-12","LIV","Fulham","H","MW4",81,13,6,0,0],
+["e18","2026-09-12","ARS","Sunderland","A","MW4",64,22,14,0,0],
+["e19","2026-09-13","MUN","Manchester City","H","MW4 · Manchester Derby",28,24,48,0,1],
+["e20","2026-09-13","MCI","Manchester United","A","MW4 · Manchester Derby",48,24,28,1,1],
+["e21","2026-09-18","CHE","Brentford","A","MW5",48,27,25,0,0],
+["e22","2026-09-19","ARS","Brighton & Hove Albion","A","MW5",54,25,21,0,0],
+["e23","2026-09-19","MCI","Sunderland","H","MW5",89,8,3,0,0],
+["e24","2026-09-20","LIV","AFC Bournemouth","A","MW5",62,22,16,0,0],
+["e25","2026-09-20","MUN","Fulham","A","MW5",49,27,24,0,0],
+["e26","2026-10-10","ARS","Leeds United","H","MW6",79,14,7,0,0],
+["e27","2026-10-10","CHE","AFC Bournemouth","H","MW6",71,18,11,0,0],
+["e28","2026-10-10","LIV","Manchester City","H","MW6 · Heavyweight",36,26,38,0,1],
+["e29","2026-10-10","MCI","Liverpool","A","MW6 · Heavyweight",38,26,36,1,1],
+["e30","2026-10-10","MUN","Tottenham Hotspur","H","MW6",45,27,28,0,0],
+["e31","2026-10-17","LIV","Brentford","A","MW7",58,24,18,0,0],
+["e32","2026-10-17","CHE","Everton","A","MW7",46,27,27,0,0],
+["e33","2026-10-17","MUN","Leeds United","A","MW7",52,26,22,0,0],
+["e34","2026-10-17","MCI","Ipswich Town","H","MW7",91,7,2,0,0],
+["e35","2026-10-17","ARS","Nottingham Forest","A","MW7",61,23,16,0,0],
+["e36","2026-10-24","ARS","Everton","H","MW8",78,15,7,0,0],
+["e37","2026-10-24","MCI","Aston Villa","A","MW8",54,24,22,0,0],
+["e38","2026-10-24","CHE","Tottenham Hotspur","H","MW8 · London Derby",48,26,26,0,1],
+["e39","2026-10-24","LIV","Brighton & Hove Albion","H","MW8",72,17,11,0,0],
+["e40","2026-10-24","MUN","AFC Bournemouth","H","MW8",67,20,13,0,0],
+["s01","2026-08-22","INT","AC Monza","H","MD1",76,16,8,0,0],
+["s02","2026-08-22","NAP","Genoa CFC","A","MD1",54,26,20,0,0],
+["s03","2026-08-23","JUV","Frosinone Calcio","A","MD1",58,25,17,0,0],
+["s04","2026-08-23","MIL","Torino FC","H","MD1",61,24,15,0,0],
+["s05","2026-08-24","ROM","ACF Fiorentina","H","MD1",52,27,21,0,0],
+["s06","2026-08-28","MIL","Venezia FC","H","MD2",72,18,10,0,0],
+["s07","2026-08-29","JUV","Parma Calcio","H","MD2",69,20,11,0,0],
+["s08","2026-08-30","NAP","Como 1907","H","MD2",65,22,13,0,0],
+["s09","2026-08-30","INT","Cagliari Calcio","A","MD2",64,23,13,0,0],
+["s10","2026-08-31","ROM","U.S. Lecce","A","MD2",48,28,24,0,0],
+["s11","2026-09-05","INT","SSC Napoli","H","MD3 · Heavyweight",53,26,21,0,1],
+["s12","2026-09-05","NAP","Inter Milan","A","MD3 · Heavyweight",21,26,53,1,1],
+["s13","2026-09-05","ROM","Atalanta BC","H","MD3",45,28,27,0,0],
+["s14","2026-09-06","JUV","AC Milan","H","MD3 · Heavyweight",46,28,26,0,1],
+["s15","2026-09-06","MIL","Juventus FC","A","MD3 · Heavyweight",26,28,46,1,1],
+["s16","2026-09-11","ROM","Venezia FC","A","MD4",55,26,19,0,0],
+["s17","2026-09-12","JUV","U.S. Sassuolo","A","MD4",52,26,22,0,0],
+["s18","2026-09-13","NAP","Bologna FC","H","MD4",58,25,17,0,0],
+["s19","2026-09-13","MIL","S.S. Lazio","A","MD4 · Tough Road",41,29,30,0,0],
+["s20","2026-09-14","INT","Udinese Calcio","H","MD4",78,15,7,0,0],
+["s21","2026-09-19","ROM","Inter Milan","H","MD5 · Heavyweight",27,28,45,0,1],
+["s22","2026-09-19","INT","AS Roma","A","MD5 · Heavyweight",45,28,27,1,1],
+["s23","2026-09-20","MIL","U.S. Lecce","H","MD5",74,17,9,0,0],
+["s24","2026-09-20","NAP","Torino FC","H","MD5",63,23,14,0,0],
+["s25","2026-09-20","JUV","Cagliari Calcio","H","MD5",71,19,10,0,0],
+["s26","2026-10-10","MIL","U.S. Sassuolo","A","MD6",54,25,21,0,0],
+["s27","2026-10-10","ROM","Bologna FC","A","MD6",39,30,31,0,0],
+["s28","2026-10-11","INT","Parma Calcio","H","MD6",81,13,6,0,0],
+["s29","2026-10-11","NAP","ACF Fiorentina","A","MD6",43,29,28,0,0],
+["s30","2026-10-11","JUV","Hellas Verona","H","MD6",76,16,8,0,0],
+["s31","2026-10-16","JUV","S.S. Lazio","H","MD7 · Big Match",56,25,19,0,1],
+["s32","2026-10-17","INT","Bologna FC","A","MD7",54,25,21,0,0],
+["s33","2026-10-17","MIL","Atalanta BC","H","MD7 · Lombardy Clash",48,27,25,0,1],
+["s34","2026-10-18","NAP","Empoli FC","H","MD7",75,17,8,0,0],
+["s35","2026-10-18","ROM","Udinese Calcio","H","MD7",64,22,14,0,0],
+["s36","2026-10-24","JUV","U.S. Lecce","A","MD8",57,25,18,0,0],
+["s37","2026-10-24","MIL","Udinese Calcio","A","MD8",49,27,24,0,0],
+["s38","2026-10-25","INT","ACF Fiorentina","H","MD8",70,19,11,0,0],
+["s39","2026-10-25","NAP","S.S. Lazio","A","MD8 · Tough Road",38,30,32,0,0],
+["s40","2026-10-25","ROM","Genoa CFC","A","MD8",44,29,27,0,0]
+].map(r=>({id:r[0],date:r[1],team:r[2],opp:r[3],ven:r[4],md:r[5],w:r[6],d:r[7],l:r[8],
+           mirror:!!r[9],big:!!r[10],lg:TEAMS[r[2]].lg}));
 
-let filter="ALL", hideMirror=true, results={};
+let fLeague="ALL",fTeam="ALL",hideMirror=true,bigOnly=false,results={};
+const rgba=(h,a)=>`rgba(${parseInt(h.slice(1,3),16)},${parseInt(h.slice(3,5),16)},${parseInt(h.slice(5,7),16)},${a})`;
 
-/* ---------- storage (optional, degrades silently) ---------- */
-async function load(){
-  try{const r=await window.storage.get("fixture-vault-results");if(r&&r.value)results=JSON.parse(r.value);}catch(e){}
-}
-async function save(){
-  try{await window.storage.set("fixture-vault-results",JSON.stringify(results));}catch(e){}
-}
+async function load(){try{const r=await window.storage.get("fixture-vault-v3");if(r&&r.value)results=JSON.parse(r.value);}catch(e){}}
+async function save(){try{await window.storage.set("fixture-vault-v3",JSON.stringify(results));}catch(e){}}
 
 const DOW=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 const MN=["January","February","March","April","May","June","July","August","September","October","November","December"];
-const dparts=s=>s.split("-").map(Number);
-function dObj(s){const[a,b,c]=dparts(s);return new Date(Date.UTC(a,b-1,c));}
-function visible(){
-  return M.filter(m=>(filter==="ALL"||m.team===filter)&&(!hideMirror||!m.mirror));
+const P=s=>s.split("-").map(Number);
+const dObj=s=>{const[a,b,c]=P(s);return new Date(Date.UTC(a,b-1,c));};
+const visible=()=>M.filter(m=>(fLeague==="ALL"||m.lg===fLeague)&&(fTeam==="ALL"||m.team===fTeam)
+  &&(!hideMirror||!m.mirror)&&(!bigOnly||m.big));
+
+function buildChips(){
+  document.getElementById("leagues").insertAdjacentHTML("beforeend",
+    `<button class="chip" data-lg="ALL" aria-pressed="true">ALL</button>`+
+    Object.entries(LEAGUES).map(([k,v])=>`<button class="chip" data-lg="${k}" aria-pressed="false">${v.toUpperCase()}</button>`).join(""));
+  document.getElementById("teams").insertAdjacentHTML("beforeend",
+    `<button class="chip" data-tm="ALL" aria-pressed="true">ALL</button>`+
+    Object.entries(TEAMS).map(([k,t])=>
+      `<button class="chip team" data-tm="${k}" data-lg="${t.lg}" aria-pressed="false" style="--tc:${t.c};--tk:${t.k}">${t.ab}</button>`).join(""));
+}
+function syncTeamChips(){
+  document.querySelectorAll("#teams .chip.team").forEach(c=>{
+    const show=fLeague==="ALL"||c.dataset.lg===fLeague;
+    c.classList.toggle("hidden",!show);
+    if(!show&&fTeam===c.dataset.tm)fTeam="ALL";
+  });
+  document.querySelectorAll("#teams .chip").forEach(c=>c.setAttribute("aria-pressed",String(c.dataset.tm===fTeam)));
 }
 
-/* ---------- render ---------- */
 function renderMonths(){
-  const rows=visible();
-  const byDate={};rows.forEach(m=>(byDate[m.date]=byDate[m.date]||[]).push(m));
-  const months=[[2026,8],[2026,9],[2026,10]];
-  document.getElementById("months").innerHTML=months.map(([y,mo])=>{
-    const first=new Date(Date.UTC(y,mo-1,1)).getUTCDay();
-    const days=new Date(Date.UTC(y,mo,0)).getUTCDate();
+  const rows=visible(),byDate={};
+  rows.forEach(m=>(byDate[m.date]=byDate[m.date]||[]).push(m));
+  document.getElementById("months").innerHTML=[[2026,8],[2026,9],[2026,10]].map(([y,mo])=>{
+    const first=new Date(Date.UTC(y,mo-1,1)).getUTCDay(),days=new Date(Date.UTC(y,mo,0)).getUTCDate();
     let cells="";
     for(let i=0;i<first;i++)cells+='<div class="cell empty"></div>';
     for(let d=1;d<=days;d++){
-      const key=`${y}-${String(mo).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
-      const ms=byDate[key]||[];
-      cells+=`<div class="cell${ms.length?" has":""}"><span class="dnum">${d}</span>`+
-        ms.map(m=>`<span class="dot" style="color:${TEAMS[m.team].c};border-color:${TEAMS[m.team].c}"
-          title="${TEAMS[m.team].name} ${m.ven==="H"?"vs":"at"} ${m.opp}">${TEAMS[m.team].name.split(" ")[0]} ${m.ven==="H"?"v":"@"} ${m.opp.split(" ")[0]}</span>`).join("")+
-        `</div>`;
+      const key=`${y}-${String(mo).padStart(2,"0")}-${String(d).padStart(2,"0")}`,ms=byDate[key]||[];
+      cells+=`<div class="cell${ms.length?" has":""}${ms.some(m=>m.big)?" heavy":""}"><span class="dnum">${d}</span>`+
+        ms.map(m=>{const t=TEAMS[m.team];
+          return `<span class="dot${m.big?" star":""}" style="color:${t.c};border-color:${t.c};background:${rgba(t.c,.18)}"
+            title="${t.n} ${m.ven==="H"?"vs.":"at"} ${m.opp} — ${LEAGUES[m.lg]} ${m.md} — ${m.w}/${m.d}/${m.l}">${t.ab} ${m.ven==="H"?"v":"@"} ${OPP[m.opp]||m.opp.slice(0,3).toUpperCase()}</span>`;
+        }).join("")+`</div>`;
     }
-    const count=rows.filter(m=>dparts(m.date)[1]===mo).length;
-    return `<section class="month"><div class="mhead"><h2>${MN[mo-1]} 2026</h2><em>${count} fixture${count===1?"":"s"}</em></div>
-      <div class="dow">${DOW.map(x=>`<span>${x.toUpperCase()}</span>`).join("")}</div>
-      <div class="grid">${cells}</div></section>`;
+    const n=rows.filter(m=>P(m.date)[1]===mo).length;
+    return `<section class="month"><div class="mhead"><h2>${MN[mo-1]} 2026</h2><em>${n} fixture${n===1?"":"s"}</em></div>
+      <div class="dow">${DOW.map(x=>`<span>${x.toUpperCase()}</span>`).join("")}</div><div class="grid">${cells}</div></section>`;
   }).join("");
 }
-
 function renderList(){
-  const rows=visible();
-  const el=document.getElementById("list");
+  const rows=visible(),el=document.getElementById("list");
   if(!rows.length){el.innerHTML='<div class="empty-note">No fixtures match this filter.</div>';return;}
   el.innerHTML=rows.map(m=>{
     const t=TEAMS[m.team],dt=dObj(m.date),r=results[m.id]||"";
     return `<article class="card${m.mirror?" mirror":""}" style="border-left-color:${t.c}">
-      <div class="when"><b>${dt.getUTCDate()}</b>${DOW[dt.getUTCDay()].toUpperCase()} · ${MN[dparts(m.date)[1]-1].slice(0,3).toUpperCase()}</div>
+      <div class="when"><b>${dt.getUTCDate()}</b>${DOW[dt.getUTCDay()].toUpperCase()} · ${MN[P(m.date)[1]-1].slice(0,3).toUpperCase()}</div>
       <div>
-        <div class="fix">${t.name} <span style="color:var(--dim)">${m.ven==="H"?"vs.":"at"}</span> ${m.opp}
-          <span class="venue ${m.ven.toLowerCase()}">${m.ven==="H"?"HOME":"AWAY"}</span></div>
-        <div class="meta">${m.comp} · ${m.md}${m.mirror?" · mirrored entry":""}</div>
+        <div class="fix"><span style="color:${t.c}">${t.n}</span> <span style="color:var(--dim)">${m.ven==="H"?"vs.":"at"}</span> ${m.opp}
+          <span class="tag ${m.ven.toLowerCase()}">${m.ven==="H"?"HOME":"AWAY"}</span>${m.big?'<span class="tag big">MARQUEE</span>':""}</div>
+        <div class="meta">${LEAGUES[m.lg]} · ${m.md}${m.mirror?" · mirrored entry":""}</div>
         <div class="bar"><i class="w" style="width:${m.w}%"></i><i class="d" style="width:${m.d}%"></i><i class="l" style="width:${m.l}%"></i></div>
         <div class="odds"><b>${m.w}% win</b> · ${m.d}% draw · ${m.l}% loss</div>
       </div>
-      <div class="res" data-id="${m.id}">
-        ${["W","D","L"].map(x=>`<button data-r="${x}" class="${r===x?"on":""}" aria-label="Log ${x}">${x}</button>`).join("")}
-      </div>
+      <div class="res" data-id="${m.id}">${["W","D","L"].map(x=>`<button data-r="${x}" class="${r===x?"on":""}" aria-label="Log ${x}">${x}</button>`).join("")}</div>
     </article>`;
   }).join("");
 }
-
 function renderStats(){
-  const rows=visible();
-  const logged=rows.filter(m=>results[m.id]);
-  const c={W:0,D:0,L:0};logged.forEach(m=>c[results[m.id]]++);
-  const hit=logged.filter(m=>{
-    const top=m.w>=m.d&&m.w>=m.l?"W":(m.d>=m.l?"D":"L");
-    return results[m.id]===top;
-  }).length;
+  const rows=visible(),logged=rows.filter(m=>results[m.id]),c={W:0,D:0,L:0};
+  logged.forEach(m=>c[results[m.id]]++);
+  const hit=logged.filter(m=>{const top=m.w>=m.d&&m.w>=m.l?"W":(m.d>=m.l?"D":"L");return results[m.id]===top;}).length;
   const avg=rows.length?Math.round(rows.reduce((s,m)=>s+m.w,0)/rows.length):0;
   document.getElementById("s-count").textContent=rows.length;
   document.getElementById("s-logged").textContent=`${logged.length}/${rows.length}`;
   document.getElementById("s-record").textContent=`${c.W}-${c.D}-${c.L}`;
   document.getElementById("s-acc").textContent=logged.length?Math.round(hit/logged.length*100)+"%":"—";
   document.getElementById("s-avg").textContent=avg+"%";
+  document.getElementById("s-big").textContent=rows.filter(m=>m.big).length;
 }
+const renderAll=()=>{renderMonths();renderList();renderStats();};
 
-function renderAll(){renderMonths();renderList();renderStats();}
-
-/* ---------- events ---------- */
-document.getElementById("filters").addEventListener("click",e=>{
-  const b=e.target.closest(".chip");if(!b)return;
-  filter=b.dataset.team;
-  document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",String(c===b)));
-  renderAll();
+document.getElementById("leagues").addEventListener("click",e=>{
+  const b=e.target.closest(".chip");if(!b)return;fLeague=b.dataset.lg;
+  document.querySelectorAll("#leagues .chip").forEach(c=>c.setAttribute("aria-pressed",String(c===b)));
+  syncTeamChips();renderAll();
+});
+document.getElementById("teams").addEventListener("click",e=>{
+  const b=e.target.closest(".chip");if(!b)return;fTeam=b.dataset.tm;syncTeamChips();renderAll();
 });
 document.getElementById("hideMirror").addEventListener("change",e=>{hideMirror=e.target.checked;renderAll();});
+document.getElementById("bigOnly").addEventListener("change",e=>{bigOnly=e.target.checked;renderAll();});
 document.getElementById("list").addEventListener("click",e=>{
   const b=e.target.closest(".res button");if(!b)return;
   const id=b.parentElement.dataset.id,v=b.dataset.r;
-  results[id]=results[id]===v?"":v;
-  save();renderList();renderStats();
+  results[id]=results[id]===v?"":v;save();renderList();renderStats();
 });
 document.getElementById("btnReset").addEventListener("click",()=>{results={};save();renderList();renderStats();});
-
-/* ---------- ICS export ---------- */
+document.getElementById("btnPrint").addEventListener("click",()=>window.print());
 document.getElementById("btnIcs").addEventListener("click",()=>{
-  const rows=M.filter(m=>!m.mirror&&(filter==="ALL"||m.team===filter));
-  const pad=n=>String(n).padStart(2,"0");
-  const stamp="20260727T000000Z";
-  const lines=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Fixture Vault//EN","CALSCALE:GREGORIAN","X-WR-CALNAME:Fixture Vault 2026/27"];
-  rows.forEach(m=>{
-    const d=dObj(m.date),nx=new Date(d.getTime()+864e5);
-    const f=x=>`${x.getUTCFullYear()}${pad(x.getUTCMonth()+1)}${pad(x.getUTCDate())}`;
-    lines.push("BEGIN:VEVENT",`UID:${m.id}@fixturevault`,`DTSTAMP:${stamp}`,
+  const rows=M.filter(m=>!m.mirror&&(fLeague==="ALL"||m.lg===fLeague)&&(fTeam==="ALL"||m.team===fTeam)&&(!bigOnly||m.big));
+  const pad=n=>String(n).padStart(2,"0"),f=x=>`${x.getUTCFullYear()}${pad(x.getUTCMonth()+1)}${pad(x.getUTCDate())}`;
+  const L=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Fixture Vault//EN","CALSCALE:GREGORIAN","X-WR-CALNAME:Fixture Vault 2026/27"];
+  rows.forEach(m=>{const d=dObj(m.date),nx=new Date(d.getTime()+864e5);
+    L.push("BEGIN:VEVENT",`UID:${m.id}@fixturevault`,"DTSTAMP:20260727T000000Z",
       `DTSTART;VALUE=DATE:${f(d)}`,`DTEND;VALUE=DATE:${f(nx)}`,
-      `SUMMARY:${TEAMS[m.team].name} ${m.ven==="H"?"vs.":"at"} ${m.opp}`,
-      `DESCRIPTION:${m.comp} — ${m.md}\\nProjected: ${m.w}% win / ${m.d}% draw / ${m.l}% loss`,
-      `LOCATION:${m.ven==="H"?"Home":"Away"}`,"END:VEVENT");
-  });
-  lines.push("END:VCALENDAR");
-  const blob=new Blob([lines.join("\r\n")],{type:"text/calendar"});
+      `SUMMARY:${m.big?"★ ":""}${TEAMS[m.team].n} ${m.ven==="H"?"vs.":"at"} ${m.opp}`,
+      `DESCRIPTION:${LEAGUES[m.lg]} — ${m.md}\\nProjected: ${m.w}% win / ${m.d}% draw / ${m.l}% loss`,
+      `LOCATION:${m.ven==="H"?"Home":"Away"}`,"END:VEVENT");});
+  L.push("END:VCALENDAR");
   const a=document.createElement("a");
-  a.href=URL.createObjectURL(blob);a.download="fixture-vault-2026-27.ics";a.click();
-  URL.revokeObjectURL(a.href);
+  a.href=URL.createObjectURL(new Blob([L.join("\r\n")],{type:"text/calendar"}));
+  a.download="fixture-vault-2026-27.ics";a.click();URL.revokeObjectURL(a.href);
 });
 
-load().then(renderAll);
+buildChips();syncTeamChips();load().then(renderAll);
 </script>
 </body>
 </html>
