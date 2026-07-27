@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FIXTURE VAULT — 2026/27</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#000000;
+  --panel:rgba(255,255,255,0.035);
+  --line:rgba(255,255,255,0.09);
+  --txt:#e9ecf2;
+  --dim:#7d8493;
+  --gold:#d4af37;
+  --neon:#39ff88;
+  --violet:#8b5cf6;
+  --rma:#d8dce6;
+  --fcb:#c0397a;
+  --atm:#e5372f;
+  --rso:#2f7ff0;
+  --bay:#ff3b30;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--txt);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body{padding:22px 16px 80px;max-width:1180px;margin:0 auto}
+a{color:inherit}
+
+/* ---------- header ---------- */
+header{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:22px}
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.34em;color:var(--gold);text-transform:uppercase}
+h1{font-family:Orbitron,sans-serif;font-weight:900;font-size:clamp(28px,6vw,46px);letter-spacing:.06em;margin:8px 0 6px;
+   background:linear-gradient(92deg,#fff 10%,var(--gold) 55%,var(--violet) 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--dim);letter-spacing:.08em}
+
+/* ---------- stat strip ---------- */
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:20px 0 24px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;backdrop-filter:blur(9px)}
+.stat b{display:block;font-family:Orbitron,sans-serif;font-size:22px;font-weight:700;letter-spacing:.03em}
+.stat span{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.2em;color:var(--dim);text-transform:uppercase}
+.stat.acc b{color:var(--neon)}
+
+/* ---------- controls ---------- */
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:18px}
+.chip{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em;padding:7px 13px;border-radius:999px;
+      border:1px solid var(--line);background:transparent;color:var(--dim);cursor:pointer;transition:.16s}
+.chip:hover{color:var(--txt);border-color:rgba(255,255,255,.28)}
+.chip[aria-pressed="true"]{color:#000;font-weight:600}
+.chip.t-all[aria-pressed="true"]{background:var(--gold);border-color:var(--gold)}
+.chip.t-rma[aria-pressed="true"]{background:var(--rma);border-color:var(--rma)}
+.chip.t-fcb[aria-pressed="true"]{background:var(--fcb);border-color:var(--fcb);color:#fff}
+.chip.t-atm[aria-pressed="true"]{background:var(--atm);border-color:var(--atm);color:#fff}
+.chip.t-rso[aria-pressed="true"]{background:var(--rso);border-color:var(--rso);color:#fff}
+.chip.t-bay[aria-pressed="true"]{background:var(--bay);border-color:var(--bay);color:#fff}
+.spacer{flex:1 1 auto}
+.ghost{font-family:"JetBrains Mono",monospace;font-size:11px;padding:7px 13px;border-radius:8px;border:1px solid var(--line);
+       background:transparent;color:var(--dim);cursor:pointer;transition:.16s}
+.ghost:hover{color:var(--neon);border-color:rgba(57,255,136,.45)}
+.toggle{display:flex;align-items:center;gap:7px;font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--dim);cursor:pointer}
+.toggle input{accent-color:var(--violet)}
+
+/* ---------- month grid ---------- */
+.month{margin-bottom:34px}
+.mhead{display:flex;align-items:baseline;gap:12px;margin-bottom:10px}
+.mhead h2{font-family:Orbitron,sans-serif;font-size:15px;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+.mhead em{font-family:"JetBrains Mono",monospace;font-style:normal;font-size:10px;color:var(--dim);letter-spacing:.14em}
+.dow{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:6px}
+.dow span{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.16em;color:var(--dim);text-align:center}
+.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.cell{min-height:74px;border:1px solid var(--line);border-radius:9px;padding:5px;background:rgba(255,255,255,.014);
+      display:flex;flex-direction:column;gap:3px}
+.cell.empty{border-style:dashed;opacity:.28}
+.cell.has{background:rgba(255,255,255,.05)}
+.dnum{font-family:"JetBrains Mono",monospace;font-size:9.5px;color:var(--dim)}
+.cell.has .dnum{color:var(--gold)}
+.dot{font-size:9px;font-family:"JetBrains Mono",monospace;line-height:1.25;padding:2px 4px;border-radius:4px;cursor:pointer;
+     border-left:2px solid;background:rgba(255,255,255,.05);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dot:hover{background:rgba(255,255,255,.13)}
+
+/* ---------- fixture list ---------- */
+.list{display:flex;flex-direction:column;gap:9px}
+.card{border:1px solid var(--line);border-left:3px solid;border-radius:11px;background:var(--panel);padding:13px 15px;backdrop-filter:blur(9px);
+      display:grid;grid-template-columns:78px 1fr auto;gap:14px;align-items:center;transition:.16s}
+.card:hover{background:rgba(255,255,255,.06)}
+.card.mirror{opacity:.62;border-style:dashed}
+.when{font-family:"JetBrains Mono",monospace;font-size:10.5px;color:var(--dim);line-height:1.5}
+.when b{display:block;font-family:Orbitron,sans-serif;font-size:19px;color:var(--txt);font-weight:700}
+.fix{font-family:Inter,sans-serif;font-size:14.5px;font-weight:600;letter-spacing:.01em}
+.venue{font-family:"JetBrains Mono",monospace;font-size:9px;padding:1px 5px;border-radius:4px;margin-left:6px;vertical-align:1px}
+.venue.h{background:rgba(57,255,136,.13);color:var(--neon)}
+.venue.a{background:rgba(139,92,246,.16);color:var(--violet)}
+.meta{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--dim);margin-top:3px;letter-spacing:.05em}
+.bar{display:flex;height:6px;border-radius:3px;overflow:hidden;margin-top:8px;max-width:340px}
+.bar i{display:block}
+.bar .w{background:var(--neon)}.bar .d{background:#5b6272}.bar .l{background:var(--atm)}
+.odds{font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--dim);margin-top:5px;letter-spacing:.05em}
+.odds b{color:var(--neon);font-weight:600}
+.res{display:flex;gap:5px}
+.res button{width:31px;height:31px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--dim);
+            font-family:Orbitron,sans-serif;font-size:11px;font-weight:700;cursor:pointer;transition:.14s}
+.res button:hover{border-color:rgba(255,255,255,.35);color:var(--txt)}
+.res button.on[data-r="W"]{background:var(--neon);border-color:var(--neon);color:#000}
+.res button.on[data-r="D"]{background:#5b6272;border-color:#5b6272;color:#000}
+.res button.on[data-r="L"]{background:var(--atm);border-color:var(--atm);color:#fff}
+
+.empty-note{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--dim);border:1px dashed var(--line);
+            border-radius:11px;padding:26px;text-align:center}
+footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);font-family:"JetBrains Mono",monospace;
+       font-size:10px;color:var(--dim);letter-spacing:.06em;line-height:1.8}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media (max-width:720px){
+  .card{grid-template-columns:60px 1fr;gap:10px}
+  .res{grid-column:1/-1;justify-content:flex-end}
+  .cell{min-height:56px}
+  .dot{font-size:0;padding:5px 3px}
+  .dot::before{content:"";display:block;height:4px;border-radius:2px;background:currentColor;opacity:.9}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Season 2026 / 27 · La Liga · Bundesliga</div>
+  <h1>FIXTURE VAULT</h1>
+  <div class="sub">39 tracked fixtures · Aug 19 → Oct 31, 2026 · projected odds vs. logged result</div>
+</header>
+
+<div class="strip">
+  <div class="stat"><span>Fixtures shown</span><b id="s-count">—</b></div>
+  <div class="stat"><span>Logged</span><b id="s-logged">—</b></div>
+  <div class="stat"><span>Record W-D-L</span><b id="s-record">—</b></div>
+  <div class="stat acc"><span>Model accuracy</span><b id="s-acc">—</b></div>
+  <div class="stat"><span>Avg. win prob</span><b id="s-avg">—</b></div>
+</div>
+
+<div class="controls" id="filters">
+  <button class="chip t-all" data-team="ALL" aria-pressed="true">ALL</button>
+  <button class="chip t-rma" data-team="RMA" aria-pressed="false">REAL MADRID</button>
+  <button class="chip t-fcb" data-team="FCB" aria-pressed="false">BARCELONA</button>
+  <button class="chip t-atm" data-team="ATM" aria-pressed="false">ATLÉTICO</button>
+  <button class="chip t-rso" data-team="RSO" aria-pressed="false">REAL SOCIEDAD</button>
+  <button class="chip t-bay" data-team="BAY" aria-pressed="false">BAYERN</button>
+  <span class="spacer"></span>
+  <label class="toggle"><input type="checkbox" id="hideMirror" checked> Hide mirrored entries</label>
+  <button class="ghost" id="btnIcs">Download .ics</button>
+  <button class="ghost" id="btnReset">Clear results</button>
+</div>
+
+<div id="months"></div>
+
+<h2 style="font-family:Orbitron,sans-serif;font-size:14px;letter-spacing:.22em;margin:6px 0 12px;color:var(--gold)">FIXTURE LOG</h2>
+<div class="list" id="list"></div>
+
+<footer>
+  Mirrored entries are the same match written from the opponent's side (Aug 26, Sep 13, Sep 20). They are hidden by default so the calendar counts each match once.<br>
+  Odds are projections, not market prices. Results save to this browser only.
+</footer>
+
+<script>
+const TEAMS={
+ RMA:{name:"Real Madrid",c:"#d8dce6"},
+ FCB:{name:"FC Barcelona",c:"#c0397a"},
+ ATM:{name:"Atlético Madrid",c:"#e5372f"},
+ RSO:{name:"Real Sociedad",c:"#2f7ff0"},
+ BAY:{name:"Bayern Munich",c:"#ff3b30"}
+};
+// [id, ISO date, team, opponent, H/A, competition, matchday label, win, draw, loss, mirror]
+const M=[
+ ["m01","2026-08-19","ATM","Málaga","H","La Liga","Matchday 1",74,17,9,0],
+ ["m02","2026-08-21","RSO","Real Betis","A","La Liga","Matchday 2",35,31,34,0],
+ ["m03","2026-08-22","RMA","Espanyol","A","La Liga","Matchday 2",68,20,12,0],
+ ["m04","2026-08-23","FCB","Elche","A","La Liga","Matchday 2",64,22,14,0],
+ ["m05","2026-08-23","ATM","Villarreal","H","La Liga","Matchday 2",52,25,23,0],
+ ["m06","2026-08-26","RMA","Real Sociedad","H","La Liga","Matchday 1 · rescheduled",66,19,15,0],
+ ["m07","2026-08-26","RSO","Real Madrid","A","La Liga","Matchday 1 · rescheduled",15,19,66,1],
+ ["m08","2026-08-27","FCB","Athletic Club","H","La Liga","Matchday 1 · rescheduled",58,23,19,0],
+ ["m09","2026-08-28","BAY","VfB Stuttgart","H","Bundesliga","Matchday 1",67,18,15,0],
+ ["m10","2026-08-29","ATM","Sevilla","A","La Liga","Matchday 3",44,28,28,0],
+ ["m11","2026-08-29","RSO","Espanyol","H","La Liga","Matchday 3",57,25,18,0],
+ ["m12","2026-08-30","RMA","Málaga","H","La Liga","Matchday 3",81,13,6,0],
+ ["m13","2026-08-31","FCB","Rayo Vallecano","H","La Liga","Matchday 3",75,16,9,0],
+ ["m14","2026-09-05","BAY","FC Schalke 04","A","Bundesliga","Matchday 2",72,17,11,0],
+ ["m15","2026-09-06","RMA","Real Betis","A","La Liga","Matchday 4",54,24,22,0],
+ ["m16","2026-09-06","FCB","Valencia","A","La Liga","Matchday 4",51,26,23,0],
+ ["m17","2026-09-06","ATM","Athletic Club","A","La Liga","Matchday 4",38,29,33,0],
+ ["m18","2026-09-06","RSO","Elche","A","La Liga","Matchday 4",48,29,23,0],
+ ["m19","2026-09-13","RMA","Rayo Vallecano","H","La Liga","Matchday 5",78,15,7,0],
+ ["m20","2026-09-13","FCB","Levante","A","La Liga","Matchday 5",62,23,15,0],
+ ["m21","2026-09-13","ATM","Real Sociedad","A","La Liga","Matchday 5",36,30,34,0],
+ ["m22","2026-09-13","RSO","Atlético Madrid","H","La Liga","Matchday 5",34,30,36,1],
+ ["m23","2026-09-13","BAY","SV Elversberg","A","Bundesliga","Matchday 3",79,14,7,0],
+ ["m24","2026-09-16","RMA","Elche","A","La Liga","Matchday 6",62,23,15,0],
+ ["m25","2026-09-16","FCB","Real Racing Club","H","La Liga","Matchday 6",84,11,5,0],
+ ["m26","2026-09-16","ATM","CA Osasuna","H","La Liga","Matchday 6",69,20,11,0],
+ ["m27","2026-09-16","RSO","Getafe","H","La Liga","Matchday 6",55,26,19,0],
+ ["m28","2026-09-18","BAY","Union Berlin","H","Bundesliga","Matchday 4",76,16,8,0],
+ ["m29","2026-09-20","RMA","Atlético Madrid","A","La Liga","Matchday 7 · Derbi",36,29,35,0],
+ ["m30","2026-09-20","FCB","Sevilla","A","La Liga","Matchday 7",46,27,27,0],
+ ["m31","2026-09-20","ATM","Real Madrid","H","La Liga","Matchday 7 · Derbi",35,29,36,1],
+ ["m32","2026-09-20","RSO","Girona","A","La Liga","Matchday 7",33,28,39,0],
+ ["m33","2026-10-10","BAY","FC Augsburg","A","Bundesliga","Matchday 5",68,20,12,0],
+ ["m34","2026-10-11","RMA","Villarreal","H","La Liga","Matchday 8",70,19,11,0],
+ ["m35","2026-10-11","FCB","Getafe","H","La Liga","Matchday 8",78,15,7,0],
+ ["m36","2026-10-11","ATM","Elche","A","La Liga","Matchday 8",56,25,19,0],
+ ["m37","2026-10-11","RSO","Valencia","H","La Liga","Matchday 8",49,28,23,0],
+ ["m38","2026-10-17","BAY","RB Leipzig","H","Bundesliga","Matchday 6",59,22,19,0],
+ ["m39","2026-10-24","BAY","Borussia Dortmund","A","Bundesliga","Matchday 7 · Der Klassiker",42,26,32,0],
+ ["m40","2026-10-31","BAY","Eintracht Frankfurt","H","Bundesliga","Matchday 8",73,17,10,0]
+].map(r=>({id:r[0],date:r[1],team:r[2],opp:r[3],ven:r[4],comp:r[5],md:r[6],w:r[7],d:r[8],l:r[9],mirror:!!r[10]}));
+
+let filter="ALL", hideMirror=true, results={};
+
+/* ---------- storage (optional, degrades silently) ---------- */
+async function load(){
+  try{const r=await window.storage.get("fixture-vault-results");if(r&&r.value)results=JSON.parse(r.value);}catch(e){}
+}
+async function save(){
+  try{await window.storage.set("fixture-vault-results",JSON.stringify(results));}catch(e){}
+}
+
+const DOW=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const MN=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const dparts=s=>s.split("-").map(Number);
+function dObj(s){const[a,b,c]=dparts(s);return new Date(Date.UTC(a,b-1,c));}
+function visible(){
+  return M.filter(m=>(filter==="ALL"||m.team===filter)&&(!hideMirror||!m.mirror));
+}
+
+/* ---------- render ---------- */
+function renderMonths(){
+  const rows=visible();
+  const byDate={};rows.forEach(m=>(byDate[m.date]=byDate[m.date]||[]).push(m));
+  const months=[[2026,8],[2026,9],[2026,10]];
+  document.getElementById("months").innerHTML=months.map(([y,mo])=>{
+    const first=new Date(Date.UTC(y,mo-1,1)).getUTCDay();
+    const days=new Date(Date.UTC(y,mo,0)).getUTCDate();
+    let cells="";
+    for(let i=0;i<first;i++)cells+='<div class="cell empty"></div>';
+    for(let d=1;d<=days;d++){
+      const key=`${y}-${String(mo).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
+      const ms=byDate[key]||[];
+      cells+=`<div class="cell${ms.length?" has":""}"><span class="dnum">${d}</span>`+
+        ms.map(m=>`<span class="dot" style="color:${TEAMS[m.team].c};border-color:${TEAMS[m.team].c}"
+          title="${TEAMS[m.team].name} ${m.ven==="H"?"vs":"at"} ${m.opp}">${TEAMS[m.team].name.split(" ")[0]} ${m.ven==="H"?"v":"@"} ${m.opp.split(" ")[0]}</span>`).join("")+
+        `</div>`;
+    }
+    const count=rows.filter(m=>dparts(m.date)[1]===mo).length;
+    return `<section class="month"><div class="mhead"><h2>${MN[mo-1]} 2026</h2><em>${count} fixture${count===1?"":"s"}</em></div>
+      <div class="dow">${DOW.map(x=>`<span>${x.toUpperCase()}</span>`).join("")}</div>
+      <div class="grid">${cells}</div></section>`;
+  }).join("");
+}
+
+function renderList(){
+  const rows=visible();
+  const el=document.getElementById("list");
+  if(!rows.length){el.innerHTML='<div class="empty-note">No fixtures match this filter.</div>';return;}
+  el.innerHTML=rows.map(m=>{
+    const t=TEAMS[m.team],dt=dObj(m.date),r=results[m.id]||"";
+    return `<article class="card${m.mirror?" mirror":""}" style="border-left-color:${t.c}">
+      <div class="when"><b>${dt.getUTCDate()}</b>${DOW[dt.getUTCDay()].toUpperCase()} · ${MN[dparts(m.date)[1]-1].slice(0,3).toUpperCase()}</div>
+      <div>
+        <div class="fix">${t.name} <span style="color:var(--dim)">${m.ven==="H"?"vs.":"at"}</span> ${m.opp}
+          <span class="venue ${m.ven.toLowerCase()}">${m.ven==="H"?"HOME":"AWAY"}</span></div>
+        <div class="meta">${m.comp} · ${m.md}${m.mirror?" · mirrored entry":""}</div>
+        <div class="bar"><i class="w" style="width:${m.w}%"></i><i class="d" style="width:${m.d}%"></i><i class="l" style="width:${m.l}%"></i></div>
+        <div class="odds"><b>${m.w}% win</b> · ${m.d}% draw · ${m.l}% loss</div>
+      </div>
+      <div class="res" data-id="${m.id}">
+        ${["W","D","L"].map(x=>`<button data-r="${x}" class="${r===x?"on":""}" aria-label="Log ${x}">${x}</button>`).join("")}
+      </div>
+    </article>`;
+  }).join("");
+}
+
+function renderStats(){
+  const rows=visible();
+  const logged=rows.filter(m=>results[m.id]);
+  const c={W:0,D:0,L:0};logged.forEach(m=>c[results[m.id]]++);
+  const hit=logged.filter(m=>{
+    const top=m.w>=m.d&&m.w>=m.l?"W":(m.d>=m.l?"D":"L");
+    return results[m.id]===top;
+  }).length;
+  const avg=rows.length?Math.round(rows.reduce((s,m)=>s+m.w,0)/rows.length):0;
+  document.getElementById("s-count").textContent=rows.length;
+  document.getElementById("s-logged").textContent=`${logged.length}/${rows.length}`;
+  document.getElementById("s-record").textContent=`${c.W}-${c.D}-${c.L}`;
+  document.getElementById("s-acc").textContent=logged.length?Math.round(hit/logged.length*100)+"%":"—";
+  document.getElementById("s-avg").textContent=avg+"%";
+}
+
+function renderAll(){renderMonths();renderList();renderStats();}
+
+/* ---------- events ---------- */
+document.getElementById("filters").addEventListener("click",e=>{
+  const b=e.target.closest(".chip");if(!b)return;
+  filter=b.dataset.team;
+  document.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",String(c===b)));
+  renderAll();
+});
+document.getElementById("hideMirror").addEventListener("change",e=>{hideMirror=e.target.checked;renderAll();});
+document.getElementById("list").addEventListener("click",e=>{
+  const b=e.target.closest(".res button");if(!b)return;
+  const id=b.parentElement.dataset.id,v=b.dataset.r;
+  results[id]=results[id]===v?"":v;
+  save();renderList();renderStats();
+});
+document.getElementById("btnReset").addEventListener("click",()=>{results={};save();renderList();renderStats();});
+
+/* ---------- ICS export ---------- */
+document.getElementById("btnIcs").addEventListener("click",()=>{
+  const rows=M.filter(m=>!m.mirror&&(filter==="ALL"||m.team===filter));
+  const pad=n=>String(n).padStart(2,"0");
+  const stamp="20260727T000000Z";
+  const lines=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Fixture Vault//EN","CALSCALE:GREGORIAN","X-WR-CALNAME:Fixture Vault 2026/27"];
+  rows.forEach(m=>{
+    const d=dObj(m.date),nx=new Date(d.getTime()+864e5);
+    const f=x=>`${x.getUTCFullYear()}${pad(x.getUTCMonth()+1)}${pad(x.getUTCDate())}`;
+    lines.push("BEGIN:VEVENT",`UID:${m.id}@fixturevault`,`DTSTAMP:${stamp}`,
+      `DTSTART;VALUE=DATE:${f(d)}`,`DTEND;VALUE=DATE:${f(nx)}`,
+      `SUMMARY:${TEAMS[m.team].name} ${m.ven==="H"?"vs.":"at"} ${m.opp}`,
+      `DESCRIPTION:${m.comp} — ${m.md}\\nProjected: ${m.w}% win / ${m.d}% draw / ${m.l}% loss`,
+      `LOCATION:${m.ven==="H"?"Home":"Away"}`,"END:VEVENT");
+  });
+  lines.push("END:VCALENDAR");
+  const blob=new Blob([lines.join("\r\n")],{type:"text/calendar"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);a.download="fixture-vault-2026-27.ics";a.click();
+  URL.revokeObjectURL(a.href);
+});
+
+load().then(renderAll);
+</script>
+</body>
+</html>
